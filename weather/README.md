@@ -11,12 +11,12 @@ The request is sent using the function:
 
 `resp, err: = http.Get (url string)`  
 
-![Decoding a JSON-received weather service response](https://raw.githubusercontent.com/rednavis/golang-demos/main/weather/images/image1.png "Decoding a JSON-received weather service response")
+![Http GET request](https://raw.githubusercontent.com/rednavis/golang-demos/main/weather/images/image1.png "Http GET request")
 
 The service has the ability to provide responses in JSON, XML and HTML formats. The response contains information about the current, minimum and maximum temperature, pressure, humidity, wind speed and others. The basic response format used in the example is JSON.
 The response in JSON format is decoded by the **`NewDecoder(r io.Reader) *Decoder`** function and entered by the **`(dec *Decoder) Decode(v interface{})`** error function into the **`result map[string]interface{}`** variable with the string **`json.NewDecoder(resp.Body).Decode(&result).`**
 
-![Http GET request](https://raw.githubusercontent.com/rednavis/golang-demos/main/weather/images/image2.png "Http GET request")
+![Decoding a JSON-received weather service response](https://raw.githubusercontent.com/rednavis/golang-demos/main/weather/images/image2.png "Decoding a JSON-received weather service response")
 
 After receiving a response on port 60000 using the **`ServeMux`** HTTP request multiplexer, the html page template is generated using the custom function **`htmlIndexPageTemplateHandler(w http.ResponseWriter, r *http.Request)`**.
 
