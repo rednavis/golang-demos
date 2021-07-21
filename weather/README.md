@@ -24,7 +24,7 @@ After receiving a response on port 60000 using the **`ServeMux`** HTTP request m
 
 The **`htmlIndexPageTemplateHandler (w http.ResponseWriter, r *http.Request)`** function creates a **`weatherDescription`** variable containing a description of the weather in the language specified in the request (English by default), and variables **`temperature`**, **`pressure`**, **`humidity`** containing temperature, pressure and humidity data, respectively. Based on this data, the text of the **`indexPageTemplate`** html-page template is generated using the received data. The template text is passed to the **`template.New("weather").Parse(indexPageTemplate)`** function, which forms a new template using the **`New(name string) *Template`** function and the parse text of the **`indexPageTemplate`** template using the **`(t *Template) Parse(text string) (*Template, error)`**.  
 
-![Parsing text and generating a html-page template](https://raw.githubusercontent.com/rednavis/golang-demos/main/weather/images/image4.png "Parsing text and generating a html-page template")
+![Generating a final html-page using predefined template](https://raw.githubusercontent.com/rednavis/golang-demos/main/weather/images/image4.png "Generating a final html-page using predefined template")
 
 After that, this template is launched by **`htmlTemplate.Execute(w, indexPageTemplate)`** using the **`(t *Template) Execute(wr io.Writer, data interface{})`** error function, which applies the parsed template to the specified data object and writes to the **`wr`** variable to display data.
 
