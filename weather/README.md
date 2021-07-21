@@ -1,4 +1,4 @@
-#Working with a web service
+# Working with a web service
 An example is working with a [web service](https://openweathermap.org/ "Web service for obtaining weather data") for obtaining weather data using the API provided by the service (for more information about the [API](https://openweathermap.org/api/ "Information about the weather web service API")).
 To start the program (entry point), the `main` function is used (by analogy with other programming languages).
 Getting data about the weather in the city is carried out by the custom function `MakeRequest ()` using the request:
