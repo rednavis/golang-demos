@@ -30,6 +30,6 @@ After that, this template is launched by **`htmlTemplate.Execute(w, indexPageTem
 
 ![Http GET request](https://raw.githubusercontent.com/rednavis/golang-demos/main/weather/images/image5.png "Http GET request")
 
-When compiling the source code of the project, the output is the **`weather_go.exe`** file. After launching the application, when called in the browser at [http://localhost:60000/](http://localhost:60000/), a page with information about the weather should be displayed.
+When compiling the source code of the project, the output is the **`weather_go.exe`** file. After launching the application, when called in the browser at **`http://localhost:60000`**, a page with information about the weather should be displayed.
 
 ![Http GET request](https://raw.githubusercontent.com/rednavis/golang-demos/main/weather/images/image6.png "Http GET request")
