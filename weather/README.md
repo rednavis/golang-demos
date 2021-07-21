@@ -28,7 +28,7 @@ The **`htmlIndexPageTemplateHandler (w http.ResponseWriter, r *http.Request)`** 
 
 After that, this template is launched by **`htmlTemplate.Execute(w, indexPageTemplate)`** using the **`(t *Template) Execute(wr io.Writer, data interface{})`** error function, which applies the parsed template to the specified data object and writes to the **`wr`** variable to display data.
 
-![Html-page template executing](https://raw.githubusercontent.com/rednavis/golang-demos/main/weather/images/image5.png "Html-page template executing")
+![Рassing the html-page to display](https://raw.githubusercontent.com/rednavis/golang-demos/main/weather/images/image5.png "Рassing the html-page to display")
 
 When compiling the source code of the project, the output is the **`weather_go.exe`** file. After launching the application, when called in the browser at **`http://localhost:60000`**, a page with information about the weather should be displayed.
 
