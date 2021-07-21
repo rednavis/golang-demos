@@ -5,8 +5,8 @@ Getting data about the weather in the city is carried out by the custom function
 `http://api.openweathermap.org/data/2.5/weather?q=minsk&units=metric&lang=en&appid={API key}`
 where `API key` is a special key provided to registered users of the service. The demo application uses a key generated to use the free functionality provided by the service.
 In the request, using the special variables `units` and `lang`, data are obtained in the metric system of measurements and in English.
-The request is sent using the function:  `resp, err: = http.Get (url string)`
-
+The request is sent using the function:  
+`resp, err: = http.Get (url string)`  
 ![Http GET request](https://raw.githubusercontent.com/rednavis/golang-demos/main/weather/images/image1.png "Http GET request")
 
 
