@@ -9,7 +9,7 @@ Receiving data for plotting a chart is carried out by the custom function **`Mak
 
 where **`company_name`** - is the name of the company in the service providing the data;  
       **`time_interval`** - is the time period (starting from the current day) for which data is provided.  
- Additionally, parameters are added to the request body: API key and hostname (to receive data from a service that provides information on financial indices)
+ Additionally, parameters are added to the request body: API key and host name (to receive data from a service that provides information on financial indices)
 
 `req.Header.Add("x-rapidapi-key", {API key}")`  
 `req.Header.Add("x-rapidapi-host", "apidojo-yahoo-finance-v1.p.rapidapi.com")`
