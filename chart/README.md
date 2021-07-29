@@ -4,7 +4,7 @@ To start the program (entry point), the **`main()`** function is used (by analog
 To enter the input parameters, the **`GetArguments()`** function is used, which takes two parameters **`name`** and **`time`** from the command line - the name of the company and the time period for which the data is provided.
 Receiving data for plotting a chart is carried out by the custom function **`MakeRequest()`**) using a request via the **`URL`**:
 
-`url:=https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-charts?symbol={company_name}&interval=1d&range={time_interval}&region=US&comparisons=NDAQ
+`url:=https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-charts?symbol={company_name}&interval=1d&range={time_interval}&region=US&comparisons=NDAQ  
 req, _ := http.NewRequest("GET", url, nil)`  
 
 where **`company_name`** - is the name of the company in the service providing the data;
