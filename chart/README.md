@@ -1,18 +1,18 @@
 # Working with financial service demo
 An example is working with a [web service](https://rapidapi.com/ "Web service for obtaining financial data") for obtaining financial data. In this case, getting the NASDAQ index using the API provided by the service (you can read more about the [API](https://docs.rapidapi.com/ "Information about the financial web service API")).
-To start the program (entry point), the **`main()`** function is used (by analogy with other programming languages).
-To enter the input parameters, the **`GetArguments()`** function is used, which takes two parameters **`name`** and **`time`** from the command line - the name of the company and the time period for which the data is provided.
-Receiving data for plotting a chart is carried out by the custom function **`MakeRequest()`**) using a request via the **`URL`**:
+To start the program (entry point), the **`main()`** function is used (by analogy with other programming languages).  
+To enter the input parameters, the **`GetArguments()`** function is used, which takes two parameters **`name`** and **`time`** from the command line - the name of the company and the time period for which the data is provided.  
+Receiving data for plotting a chart is carried out by the custom function **`MakeRequest()`** using a request via the **`URL`**:
 
-`url:=https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-charts?symbol={company_name}&interval=1d&range={time_interval}&region=US&comparisons=NDAQ  
-req, _ := http.NewRequest("GET", url, nil)`  
+`url:=https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/get-charts?symbol={company_name}&interval=1d&range={time_interval}&region=US&comparisons=NDAQ`  
+`req, _ := http.NewRequest("GET", url, nil)`  
 
 where **`company_name`** - is the name of the company in the service providing the data;
       **`time_interval`** - is the time period (starting from the current day) for which data is provided.
 Additionally, parameters are added to the request body: API key and hostname (to receive data from a service that provides information on financial indices)
 
-`req.Header.Add("x-rapidapi-key", {API key}")
-req.Header.Add("x-rapidapi-host", "apidojo-yahoo-finance-v1.p.rapidapi.com")`
+`req.Header.Add("x-rapidapi-key", {API key}")`  
+`req.Header.Add("x-rapidapi-host", "apidojo-yahoo-finance-v1.p.rapidapi.com")`
 
 where **`API key`** is a special key provided to registered users of the service. The demo application uses a key generated to use the free functionality provided by the service.
 
@@ -38,7 +38,7 @@ If the response is successfully verified on port 60000 using the **`ServeMux`** 
 
 ![Formation of the html-page template by the Http-request multiplexer](https://raw.githubusercontent.com/rednavis/golang-demos/main/chart/images/image5.png "Formation of the html-page template by the Http-request multiplexer")
 
-The **`htmlIndexPageTemplateHandler (w http.ResponseWriter, r *http.Request)`** creates a **`chartScripts`** variable that receives the script body for filling and displaying a chart of financial index values using the **`getChartScripts()`** custom function.
+The **`htmlIndexPageTemplateHandler(w http.ResponseWriter, r *http.Request)`** creates a **`chartScripts`** variable that receives the script body for filling and displaying a chart of financial index values using the **`getChartScripts()`** custom function.
 
 ![Http GET request](https://raw.githubusercontent.com/rednavis/golang-demos/main/chart/images/image6.png "Http GET request")
 
