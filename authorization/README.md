@@ -12,5 +12,5 @@ PostgreSQL should be with the following settings:
 - password: password  
 - port: 5432  
 
-The user database must be previously created.  
+The **`users`** database must be previously created.  
 The database tables are created by the application.
