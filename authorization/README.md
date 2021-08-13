@@ -5,10 +5,10 @@ When compiling the source code of the project, the output is the **`authorizatio
 For the application to work, it is necessary:  
 - to place folder with html-file templates;  
 - .env file with database settings in the directory with the executable file;  
-- installed and configured version of the PostgreSQL.  
+- installed and configured version of the PostgreSQL.
 PostgreSQL should be with the following settings:  
 - user: postgres  
 - password: password  
-- port: 5432  
+- port: 5432
 The user database must be previously created.  
 The database tables are created by the application.
