@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Authorization demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" integrity="sha512-0p3K0H3S6Q4bEWZ/WmC94Tgit2ular2/n0ESdfEX8l172YyQj8re1Wu9s/HT9T/T2osUw5Gx/6pAZNk3UKbESw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+  <nav class="navbar navbar-dark navbar-expand-md bg-danger">
+    <div class="container">
+      <a href="/" class="navbar-brand"><span class="fa fa-user-circle"></span>&nbspAuthorization demo</a>
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle my-1 ml-2" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="fa fa-sign-in"></span>
+          Sing in
+        </button>
+        <div class="dropdown-menu">
+            <form id="loginForm" class="form-group mx-3" name="loginForm" onsubmit="return false">
+                <input class="form-control mr-1 mb-2" type="text" placeholder="Email" name="email">
+                <input class="form-control mr-1 mb-2" type="password" placeholder=Password name="password">
+                <button id="signInButton" class="btn btn-success w-100" type="submit" onClick="sendSignInData()">Sign in</button>
+                <div class="dropdown-divider"></div>
+                <a id="registrationButton" class="btn btn-primary w-100" type="submit" href="registration">Registration</a>
+            </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+   <div class="container pt-2">
+      <div class="row">
+        <div class="col-5 offset-3">
+          <h3>Registration</h3>
+          <form id="userRegister" charset="utf-8" class="form-horizontal" accept-charset="UTF-8" name="userRegister">
+            <div class="form-group ">
+              <label class="col-form-label">Email</label>
+              <input id="email" name="email" class="form-control is-invalid" type="text" value=""/>
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-group ">
+              <label class="col-form-label">Password</label>
+              <input id="password" name="password" class="form-control is-invalid" type="password" value=""/>
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-group ">
+              <label class="col-form-label">Confirm password</label>
+              <input id="confirmPassword" name="confirmPassword" class="form-control is-invalid" type="password" value=""/>
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-group mt-2">
+              <button id="register" type="submit" class="btn btn-primary float-end" onClick="registerUser()">
+                <span class="fa fa-check"></span>
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js" integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="text/javascript">
+      var failedNote;
+
+      function closeNoty() {
+        if (failedNote) {
+          failedNote.close();
+          failedNote = undefined;
+        }
+      }
+
+      function successfulPasswordNoty(message) {
+        closeNoty();
+        new Noty({
+          text: "<span class='fa fa-lg fa-check'></span> &nbsp;" + message,
+          type: "success",
+          layout: "bottomRight",
+          closable: false,
+          timeout: false,
+          callbacks:{
+            onClose: function() {
+              $("#register").removeAttr("disabled");
+              $("#dropdownMenuButton").removeAttr("disabled");
+              window.location.href = "/";
+            }
+          }
+        }).show();
+      }
+
+      function unsuccessfulPasswordNoty(message) {
+        closeNoty();
+        failedNote = new Noty({
+          text: "<span class='fa fa-lg fa-exclamation-circle'></span> &nbsp;" + message,
+          type: "error",
+          layout: "bottomRight",
+          closable: false,
+          timeout: false,
+          callbacks:{
+            onClose: function() {
+              $("#register").removeAttr("disabled");
+              $("#dropdownMenuButton").removeAttr("disabled");
+              $("#email").attr("class", "form-control is-invalid");
+              $("#password").attr("class", "form-control is-invalid");
+              $("#confirmPassword").attr("class", "form-control is-invalid");
+            }
+          }
+        }).show();
+      }
+
+      function unsuccessfulSignInNoty(message) {
+          closeNoty();
+          failedNote = new Noty({
+              text: "<span class='fa fa-lg fa-exclamation-circle'></span> &nbsp;" + message,
+              type: "error",
+              layout: "bottomRight",
+              closable: false,
+              timeout: false,
+              callbacks:{
+                  onClose: function() {
+                      $("#dropdownMenuButton").removeAttr("disabled");
+                      $("#register").removeAttr("disabled");
+                  }
+              }
+          }).show();
+      }
+
+      function sendSignInData(){
+          var object = {};
+          var formData = new FormData(document.forms.loginForm);
+
+          $("#dropdownMenuButton").attr("disabled", "disabled");
+          $("#register").attr("disabled", "disabled");
+
+          formData.forEach(function(value, key){
+              object[key] = value;
+          });
+
+          var jsonData = JSON.stringify(object);
+
+          $.ajax({
+              url: '/api/user/login',
+              type : "POST",
+              dataType : 'json',
+              data: jsonData,
+              contentType: 'application/json; charset=utf-8',
+              success : function(result) {
+                  if (result["status"] != true) {
+                      unsuccessfulSignInNoty(result["message"]);
+                  } else {
+                      document.cookie = encodeURIComponent("jwt_token") + '=' + encodeURIComponent(result["account"]["token"]);
+                      window.location.href = "/visit";
+                  }
+              },
+              error: function(xhr, resp, text) {
+                  console.log(xhr, resp, text);
+              }
+          });
+      }
+
+      function sendRegisterData(emailValue, password){
+        var object = {};
+        object["email"] = emailValue;
+        object["password"] = password;
+
+        var jsonData = JSON.stringify(object);
+
+        $.ajax({
+          url: '/api/user/new',
+          type : "POST",
+          dataType : 'json',
+          data: jsonData,
+          contentType: 'application/json; charset=utf-8',
+          success : function(result) {
+              if (result["status"] != true) {
+                  unsuccessfulPasswordNoty(result["message"]);
+              } else {
+                  successfulPasswordNoty("User registered successfully!");
+              }
+          },
+          error: function(xhr, resp, text) {
+            console.log(xhr, resp, text);
+          }
+        });
+      }
+
+      function registerUser(){
+        var emailValue = $("#email").val();
+        var passwordValue = $("#password").val();
+        var confirmPasswordValue = $("#confirmPassword").val();
+
+        $("#register").attr("disabled", "disabled");
+        $("#dropdownMenuButton").attr("disabled", "disabled");
+
+        if(passwordValue != confirmPasswordValue) {
+          $(".error").html("Passwords mismatch!");
+          unsuccessfulPasswordNoty("Passwords mismatch! Re-enter your passwords!");
+        } else {
+          $(".error").html("");
+          $("#email").attr("class", "form-control is-valid");
+          $("#password").attr("class", "form-control is-valid");
+          $("#confirmPassword").attr("class", "form-control is-valid");
+          sendRegisterData(emailValue, passwordValue);
+        }
+      }
+   </script>
+   </body>
+</html>
