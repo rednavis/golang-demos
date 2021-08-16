@@ -2,7 +2,7 @@
 Golang demo project with registration / authorization of users and logging of visits via REST interface. When a user logs in, the statistics of the user's visits are displayed.  
 User authentication is based on JWT tokens. PostgreSQL is used to store user data.  
 The structure of the project is shown in the figure below.  
-
+![Project structure](https://raw.githubusercontent.com/rednavis/golang-demos/main/authorization/images/image1.png "Project structure")
 The app directory contains the **`authorization.go`** file that implements Middleware for working with JWT. This Middleware provides for intercepting all requests, checking for the presence of an authentication token (JWT), checking whether it is valid and valid, and then sending an error message if deficiencies are found, or vice versa, processing the request if everything is in order.  
 The **`controllers`** directory contains files:
 - **`actionsControllers.go`**, which implements controller functions for the **`Action`** entity. Namely:
@@ -36,3 +36,4 @@ PostgreSQL should be with the following settings:
 The **`users`** database must be previously created.  
 The database tables are created by the application.
 When you go to the application page at http: // localhost: 60000, the main application page should open.
+![Authorization demo start html-page](https://raw.githubusercontent.com/rednavis/golang-demos/main/authorization/images/image2.png "Authorization demo start html-page")
