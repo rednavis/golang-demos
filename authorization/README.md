@@ -57,10 +57,13 @@ PostgreSQL should be with the following settings:
 - port: 5432  
 
 The **`users`** database must be previously created.  
+
 The empty database tables are created by the application.  
 To create a database with test data, you can use the **`db_create.sql`** file from the **`db`** folder.  
 As a result, a test database will be created with users with the following login and password:
 - user1 **email**: `test1@gmail.com` **password**: `test1`;  
 - user2 **email**: `test2@gmail.com` **password**: `test2`;  
  
+The database tables are created by the application.
+
 When you go to the application page at http: // localhost: 60000, the main application page should open.
