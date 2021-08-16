@@ -1,8 +1,31 @@
 # Authorization demo
+## Use cases  
+The start page of the application looks like this.  
+
+![Authorization demo start html-page](https://raw.githubusercontent.com/rednavis/golang-demos/main/authorization/images/image2.png "Authorization demo start html-page")  
+
+By clicking the **`Sign in`** button, the user gets the opportunity to log into the application (if he is registered) or register a new account. When choosing to register a new account, it is redirected to the registration page.  
+
+![New user registration html-page](https://raw.githubusercontent.com/rednavis/golang-demos/main/authorization/images/image3.png "New user registration html-page")  
+
+In case of registration errors during the registration process, the user receives a corresponding informational message.  
+Upon successful registration, the user is redirected to the main page to enter a username and password.
+If the user attempts to log in unsuccessfully, an informational message is displayed.  
+If the user tries to go to a non-existent page, they are redirected to a page with information about the 404 error.
+
+![Error 404 html-page](https://raw.githubusercontent.com/rednavis/golang-demos/main/authorization/images/image5.png "Error 404 html-page")  
+
+Upon entering the application, the user receives information about their inputs / outputs to the application.
+
+![User info html-page](https://raw.githubusercontent.com/rednavis/golang-demos/main/authorization/images/image4.png "User info html-page")
+
+## Development guideline  
 Golang demo project with registration / authorization of users and logging of visits via REST interface. When a user logs in, the statistics of the user's visits are displayed.  
 User authentication is based on JWT tokens. PostgreSQL is used to store user data.  
 The structure of the project is shown in the figure below.  
+
 ![Project structure](https://raw.githubusercontent.com/rednavis/golang-demos/main/authorization/images/image1.png "Project structure")  
+
 The app directory contains the **`authorization.go`** file that implements Middleware for working with JWT. This Middleware provides for intercepting all requests, checking for the presence of an authentication token (JWT), checking whether it is valid and valid, and then sending an error message if deficiencies are found, or vice versa, processing the request if everything is in order.  
 The **`controllers`** directory contains files:
 - **`actionsControllers.go`**, which implements controller functions for the **`Action`** entity. Namely:
@@ -34,6 +57,10 @@ PostgreSQL should be with the following settings:
 - port: 5432  
 
 The **`users`** database must be previously created.  
-The database tables are created by the application.
-When you go to the application page at http: // localhost: 60000, the main application page should open.  
-![Authorization demo start html-page](https://raw.githubusercontent.com/rednavis/golang-demos/main/authorization/images/image2.png "Authorization demo start html-page")
+The empty database tables are created by the application.  
+To create a database with test data, you can use the **`db_create.sql`** file from the **`db`** folder.  
+As a result, a test database will be created with users with the following login and password:
+- user1 **email**: `test1@gmail.com` **password**: `test1`;  
+- user2 **email**: `test2@gmail.com` **password**: `test1`;  
+ 
+When you go to the application page at http: // localhost: 60000, the main application page should open.
