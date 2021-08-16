@@ -1,4 +1,25 @@
 # Authorization demo
+## Use cases  
+The start page of the application looks like this.  
+
+![Authorization demo start html-page](https://raw.githubusercontent.com/rednavis/golang-demos/main/authorization/images/image2.png "Authorization demo start html-page")  
+
+By clicking the **`Sign in`** button, the user gets the opportunity to log into the application (if he is registered) or register a new account. When choosing to register a new account, it is redirected to the registration page.  
+
+![New user registration html-page](https://raw.githubusercontent.com/rednavis/golang-demos/main/authorization/images/image3.png "New user registration html-page")  
+
+In case of registration errors during the registration process, the user receives a corresponding informational message.  
+Upon successful registration, the user is redirected to the main page to enter a username and password.
+If the user attempts to log in unsuccessfully, an informational message is displayed.  
+If the user tries to go to a non-existent page, they are redirected to a page with information about the 404 error.
+
+![Error 404 html-page](https://raw.githubusercontent.com/rednavis/golang-demos/main/authorization/images/image5.png "Error 404 html-page")  
+
+Upon entering the application, the user receives information about their inputs / outputs to the application.
+
+![User info html-page](https://raw.githubusercontent.com/rednavis/golang-demos/main/authorization/images/image4.png "User info html-page")
+
+## Development guideline  
 Golang demo project with registration / authorization of users and logging of visits via REST interface. When a user logs in, the statistics of the user's visits are displayed.  
 User authentication is based on JWT tokens. PostgreSQL is used to store user data.  
 The structure of the project is shown in the figure below.  
@@ -37,23 +58,4 @@ PostgreSQL should be with the following settings:
 
 The **`users`** database must be previously created.  
 The database tables are created by the application.
-When you go to the application page at http: // localhost: 60000, the main application page should open.  
-# Using the app  
-The start page of the application looks like this.  
-
-![Authorization demo start html-page](https://raw.githubusercontent.com/rednavis/golang-demos/main/authorization/images/image2.png "Authorization demo start html-page")  
-
-By clicking the **`Sign in`** button, the user gets the opportunity to log into the application (if he is registered) or register a new account. When choosing to register a new account, it is redirected to the registration page.  
-
-![New user registration html-page](https://raw.githubusercontent.com/rednavis/golang-demos/main/authorization/images/image3.png "New user registration html-page")  
-
-In case of registration errors during the registration process, the user receives a corresponding informational message.  
-Upon successful registration, the user is redirected to the main page to enter a username and password.
-If the user attempts to log in unsuccessfully, an informational message is displayed.  
-If the user tries to go to a non-existent page, they are redirected to a page with information about the 404 error.
-
-![Error 404 html-page](https://raw.githubusercontent.com/rednavis/golang-demos/main/authorization/images/image5.png "Error 404 html-page")  
-
-Upon entering the application, the user receives information about their inputs / outputs to the application.
-
-![User info html-page](https://raw.githubusercontent.com/rednavis/golang-demos/main/authorization/images/image4.png "User info html-page")
+When you go to the application page at http: // localhost: 60000, the main application page should open.
