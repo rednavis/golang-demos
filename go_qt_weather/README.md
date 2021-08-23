@@ -41,7 +41,7 @@ The application is started by the function **`(ptr *QApplication) Exec() int`**.
 The entry point to the program is the main file, which contains function calls to obtain weather data **`makeRequest()`** and **`makeWidget()`** - create a widget to display weather information.  
 When compiling the source code of the project, the output is the **`go_qt_weather.exe`** file.  
 Additionally, you need to move the icon folder to the directory with the executable file.  
-When you run the executable file **`go_qt_weather.exe`**, a **`qtbox`** folder is created in the directory and **`qtbox`** is downloaded. Qt is deployed in this folder and an **`qtbox.exe`** file is created, which is necessary for the application to work.  
+When you run the executable file **`go_qt_weather.exe`**, a **`qtbox`** folder is created in the directory and **`qtbox`** is downloaded. Qt is deployed in this folder and an **`qtbox.exe`** file is created, which is necessary for the application to work. This is because Qt classes and methods are called from Golang not directly, but through interprocess communication through the network port (which is what qtbox is intended for).  
 
 ![Downloading qtbox](https://raw.githubusercontent.com/rednavis/golang-demos/main/go_qt_weather/images/image9.png "Downloading qtbox")  
 
