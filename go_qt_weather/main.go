@@ -82,7 +82,6 @@ func makeWidget () {
 	weatherDescription = strings.Title(weatherDescription)
 
 	weatherDescriptionLabel := widgets.NewQLabel2(weatherDescription, nil, 0)
-	//weatherDescriptionLabel.SetText(weatherDescription)
 	weatherWidget.Layout().AddWidget(weatherDescriptionLabel)
 
 	cloudiness := "Cloudiness " + fmt.Sprintf("%v", result["clouds"].(map[string]interface{})["all"]) + " %"
